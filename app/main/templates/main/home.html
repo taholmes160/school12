@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="jumbotron">
+    <h1 class="display-4">Welcome to the School Management App</h1>
+    <p class="lead">Manage your school's users, roles, and more with ease.</p>
+    <hr class="my-4">
+    <p>Click below to view the list of users.</p>
+    <a class="btn btn-primary btn-lg" href="{{ url_for('users.list_users') }}" role="button">View Users</a>
+</div>
+{% endblock %}

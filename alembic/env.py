@@ -11,7 +11,7 @@ from alembic import context
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 # Import the db object from your models
-from school_management.models import db, Base
+from app.models import db, Base
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
