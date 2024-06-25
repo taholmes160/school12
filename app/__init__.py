@@ -15,12 +15,12 @@ def create_app(config_class=Config):
     db.init_app(app)
 
     # Import blueprints
-    from app.main import main as main_blueprint
-    from app.users import users as users_blueprint
+    from app.main.routes import main as main_blueprint
+    from app.users.routes import users as users_blueprint
 
     # Register blueprints with the application
     app.register_blueprint(main_blueprint)
     app.register_blueprint(users_blueprint, url_prefix='/users')
 
-    # Return the application instance
     return app
+
