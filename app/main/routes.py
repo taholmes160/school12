@@ -1,6 +1,5 @@
-from flask import render_template
-from app.main import bp
+from flask import current_app
 
-@bp.route('/')
 def home():
-    return render_template('main/home.html')
+    template = current_app.jinja_env.get_template('main/home.html')
+    return template.render()

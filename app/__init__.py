@@ -3,6 +3,8 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from config import Config
+from app.main.routes import home
+from app.users.routes import users
 
 db = SQLAlchemy()
 
@@ -17,10 +19,13 @@ def create_app(config_class=Config):
     Session = sessionmaker(bind=engine)
     app.db_session = Session()
 
-    # ... (rest of your app initialization code)
+    # Register routes
+    app.add_url_rule('/', 'home', home)
+    app.add_url_rule('/users', 'users', users)
 
     @app.teardown_appcontext
     def shutdown_session(exception=None):
-        app.db_session.remove()
+        app.db_session.close()
+        return app
 
     return app
