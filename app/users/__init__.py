@@ -1,5 +1,7 @@
 from flask import Blueprint
 
-bp = Blueprint('users', __name__)
+# Create a Blueprint for the 'users' part of your application.
+users = Blueprint('users', __name__)
 
-from app.users import routes
+# Import the routes to associate them with the blueprint.
+from . import routes

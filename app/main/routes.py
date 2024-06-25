@@ -1,5 +1,9 @@
-from flask import current_app, render_template
+from flask import render_template
+from . import main  # Import the blueprint
 
+@main.route('/')
 def home():
-    return render_template('app/main/templates/main/home.html')
+    # Render the 'home.html' template located under 'templates/main/'
+    return render_template('main/home.html')
 
+    
