@@ -3,14 +3,14 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from config import Config
-from app.main.routes import home
-from app.users.routes import users
 
 db = SQLAlchemy()
 
 def create_app(config_class=Config):
-    app = Flask(__name__)
+    app = Flask(__name__, template_folder='app/templates')
     app.config.from_object(config_class)
+
+    print(f"Template folder: {app.template_folder}")
 
     db.init_app(app)
 
@@ -20,6 +20,8 @@ def create_app(config_class=Config):
     app.db_session = Session()
 
     # Register routes
+    from .main.routes import home
+    from .users.routes import users
     app.add_url_rule('/', 'home', home)
     app.add_url_rule('/users', 'users', users)
 

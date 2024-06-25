@@ -1,5 +1,5 @@
-from flask import current_app
+from flask import current_app, render_template
 
 def home():
-    template = current_app.jinja_env.get_template('main/home.html')
-    return template.render()
+    return render_template('app/main/templates/main/home.html')
+
