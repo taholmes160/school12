@@ -1,11 +1,14 @@
-from flask import render_template, Blueprint
-from app.models import User  # Import the User model from the models module
+from flask import Blueprint, render_template
+from app.models import User
 
-users = Blueprint('users', __name__, url_prefix='/users')
+users_bp = Blueprint('users', __name__, url_prefix='/users')
 
-@users.route('/list')
+@users_bp.route('/list')
 def list_users():
-    # Fetch the users from the database using the User model
+    """
+    Render the list of users.
+    """
     users = User.query.all()
     return render_template('users/list.html', users=users)
+
 
